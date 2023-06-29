@@ -45,8 +45,9 @@ class Docker {
       actionFolder,
       runnerTempPath,
       sshAgent,
-      sshPublicKeysDirectoryPath,
       gitPrivateToken,
+      sshPublicKeysDirectoryPath,
+      gitPrivateUser,
       dockerWorkspacePath,
       dockerCpuLimit,
       dockerMemoryLimit,
@@ -64,6 +65,7 @@ class Docker {
             ${ImageEnvironmentFactory.getEnvVarString(parameters, additionalVariables)} \
             --env GITHUB_WORKSPACE=${dockerWorkspacePath} \
             --env GIT_CONFIG_EXTENSIONS \
+            ${gitPrivateUser ? `--env GIT_PRIVATE_USER="${gitPrivateUser}"` : ''} \
             ${gitPrivateToken ? `--env GIT_PRIVATE_TOKEN="${gitPrivateToken}"` : ''} \
             ${sshAgent ? '--env SSH_AUTH_SOCK=/ssh-agent' : ''} \
             --volume "${githubHome}":"/root:z" \

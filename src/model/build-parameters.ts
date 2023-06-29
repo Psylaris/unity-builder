@@ -43,6 +43,7 @@ class BuildParameters {
   public customParameters!: string;
   public sshAgent!: string;
   public providerStrategy!: string;
+  public gitPrivateUser!: string;
   public gitPrivateToken!: string;
   public awsStackName!: string;
   public kubeConfig!: string;
@@ -150,6 +151,7 @@ class BuildParameters {
       androidSymbolType: androidSymbolExportType,
       customParameters: Input.customParameters,
       sshAgent: Input.sshAgent,
+      gitPrivateUser: Input.gitPrivateUser,
       gitPrivateToken: Input.gitPrivateToken || (await GithubCliReader.GetGitHubAuthToken()),
       chownFilesTo: Input.chownFilesTo,
       providerStrategy: CloudRunnerOptions.providerStrategy,

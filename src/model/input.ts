@@ -178,6 +178,10 @@ class Input {
     return Input.getInput('sshAgent') || '';
   }
 
+  static get gitPrivateUser(): string {
+    return Input.getInput('gitPrivateUser') || '';
+  }
+
   static get gitPrivateToken(): string | undefined {
     return Input.getInput('gitPrivateToken');
   }

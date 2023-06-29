@@ -85,6 +85,10 @@ inputs:
     required: false
     default: ''
     description: 'SSH Agent path to forward to the container'
+  gitPrivateUser:
+    required: false
+    default: ''
+    description: '[CloudRunner] Github username to pull from github'
   gitPrivateToken:
     required: false
     default: ''

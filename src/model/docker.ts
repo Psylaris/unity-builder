@@ -17,7 +17,7 @@ class Docker {
   }
 
   static getLinuxCommand(image, parameters): string {
-    const { workspace, actionFolder, runnerTempPath, sshAgent, gitPrivateToken } = parameters;
+    const { workspace, actionFolder, runnerTempPath, sshAgent, gitPrivateToken, gitPrivateUser } = parameters;
 
     const githubHome = path.join(runnerTempPath, '_github_home');
     if (!existsSync(githubHome)) mkdirSync(githubHome);
@@ -31,6 +31,7 @@ class Docker {
             --env UNITY_SERIAL \
             --env GITHUB_WORKSPACE=/github/workspace \
             ${gitPrivateToken ? `--env GIT_PRIVATE_TOKEN="${gitPrivateToken}"` : ''} \
+            ${gitPrivateUser ? `--env GIT_PRIVATE_USER="${gitPrivateUser}"` : ''} \
             ${sshAgent ? '--env SSH_AUTH_SOCK=/ssh-agent' : ''} \
             --volume "${githubHome}":"/root:z" \
             --volume "${githubWorkflow}":"/github/workflow:z" \

@@ -273,6 +273,10 @@ class Input {
     return Input.getInput(`cloudRunnerTests`) || false;
   }
 
+  static get gitPrivateUser(): string {
+    return Input.getInput('gitPrivateUser') || '';
+  }
+
   public static ToEnvVarFormat(input: string) {
     if (input.toUpperCase() === input) {
       return input;

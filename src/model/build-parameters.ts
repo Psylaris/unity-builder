@@ -65,6 +65,7 @@ class BuildParameters {
   public cloudRunnerIntegrationTests!: boolean;
   public cloudRunnerBuilderPlatform!: string | undefined;
   public isCliMode!: boolean;
+  public gitPrivateUser!: string;
 
   static async create(): Promise<BuildParameters> {
     const buildFile = this.parseBuildFile(Input.buildName, Input.targetPlatform, Input.androidAppBundle);
@@ -144,6 +145,7 @@ class BuildParameters {
       checkDependencyHealthOverride: Input.checkDependencyHealthOverride,
       startDependenciesOverride: Input.startDependenciesOverride,
       cacheKey: Input.cacheKey,
+      gitPrivateUser: Input.gitPrivateUser,
     };
   }
 

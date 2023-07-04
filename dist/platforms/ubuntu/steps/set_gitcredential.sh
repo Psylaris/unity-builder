@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-if [ -z "${GIT_PRIVATE_TOKEN}" ]
+if [ -n "${GIT_PRIVATE_USER}" ]
+then
+  echo "GIT_PRIVATE_USER set, setting up credential manager. Username: ${GIT_PRIVATE_USER}"
+  git config --global credential.helper '!f() { sleep 1; echo "username=$GIT_PRIVATE_USER"; echo "password=$GIT_PRIVATE_TOKEN"; }; f'
+elif [ -z "${GIT_PRIVATE_TOKEN}" ]
 then
   echo "GIT_PRIVATE_TOKEN unset skipping"
 else

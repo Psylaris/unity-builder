@@ -125,6 +125,24 @@ echo ""
 
 # Reference: https://docs.unity3d.com/2019.3/Documentation/Manual/CommandLineArguments.html
 
+# Launching Unity with the GUI first as this fixes some ordering to prevent build corruption. See #861n9pvbd for more info
+echo ""
+echo "###########################"
+echo "#Launching w/ GUI for prep#"
+echo "###########################"
+echo ""
+
+unity-editor \
+  -projectPath "$UNITY_PROJECT_PATH" \
+  -quit \
+  -logfile /dev/stdout \
+
+echo ""
+echo "###########################"
+echo "#Launching Unity for build#"
+echo "###########################"
+echo ""
+
 unity-editor \
   -logfile /dev/stdout \
   -quit \
